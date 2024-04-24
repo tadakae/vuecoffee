@@ -8,8 +8,8 @@
             </div>
         </div>
 
-        <ul class="w-2 flex items-center gap-24">
-            <li class="flex items-center w-6 gap-2">
+        <ul class="w-2 flex items-center gap-24 cursor-pointer">
+            <li  class="flex items-center w-6 gap-2">
                 <p>Корзина</p>
             </li>
             <li class="flex items-center w-6 gap-2">

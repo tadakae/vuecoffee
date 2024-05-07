@@ -1,4 +1,7 @@
 <script setup>
+defineProps({
+    onChangeSelect: Array
+})
 
 </script>
 
@@ -12,10 +15,10 @@
 
                     <input class=" border border-gray-200 rounded-md py-2 pl-10 pr-4 focus:outline-none focus:border-gray-400" placeholder="Поиск...">
             </div>
-            <select class=" border rounded-md py-2 px-3">
-                <option>По названию</option>
-                <option>По цене (Дешевые)</option>
-                <option>По цене (Дорогие)</option>
+            <select @change="onChangeSelect" class=" border rounded-md py-2 px-3">
+                <option value="name">По названию</option>
+                <option value="price">По цене (Дешевые)</option>
+                <option value="-price">По цене (Дорогие)</option>
             </select>
         </div>
 

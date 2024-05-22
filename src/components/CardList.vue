@@ -5,6 +5,8 @@ import Card from "@/components/Card.vue";
 defineProps({
     items: Array
 })
+const emit =defineEmits(['addToCard'])
+
 </script>
 
 
@@ -16,6 +18,7 @@ defineProps({
               :Title="item.Title"
               :imageUrl="item.imageUrl"
               :Price="item.Price"
+              :onClickAdd="() => emit('addToCard', item)"
       />
 
   </div>

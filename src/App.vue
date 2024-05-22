@@ -8,6 +8,7 @@ import Drawer from "@/components/Drawer.vue";
 import Head from "@/components/Head.vue"
 
 const items = ref([])
+const card = ref([])
 
 const drawerOpen = ref(false)
 
@@ -15,10 +16,20 @@ const openDrawer = () => {
     drawerOpen.value = true
 }
 
+const closeDrawer = () => {
+    drawerOpen.value = false
+}
+
+
 const filters = reactive({
     sortBy: '',
     searchQuery: '',
 })
+
+const addToCard = (item) => {
+    card.value.push(item)
+    console.log(item)
+}
 
 
 const onChangeSelect = event => {
@@ -48,7 +59,7 @@ watch( ()=> filters, async () => {
 })
 
 provide('cardActions', {
-    // closeDrawer,
+    closeDrawer,
     openDrawer
 })
 
@@ -56,10 +67,10 @@ provide('cardActions', {
 
 <template>
   <div class="w-4/5 m-auto bg-white h-screen rounded-xl shadow-xl mt-14">
-      <Drawer v-if="drawerOpen" />
+      <Drawer  v-if="drawerOpen" />
       <Header @open-Drawer = "openDrawer" />
       <Head :onChangeSelect="onChangeSelect" />
-      <CardList :items="items" />
+      <CardList :items="items" @add-to-card="addToCard" />
 
   </div>
 </template>

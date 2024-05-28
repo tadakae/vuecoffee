@@ -19,6 +19,7 @@ const emit =defineEmits(['addToCard'])
               :imageUrl="item.imageUrl"
               :Price="item.Price"
               :onClickAdd="() => emit('addToCard', item)"
+              :isAdded="item.isAdded"
       />
 
   </div>

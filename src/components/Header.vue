@@ -1,5 +1,5 @@
 <template>
-    <header class="flex  border-slate-300 px-8 py-8">
+    <header class="flex justify-between w-9/12  border-slate-300 px-8 py-8">
         <div class="flex items-center gap-4 mr-96 pr-56">
             <img src="./assets/Coffeeicon.jpg" alt="" class="w-14" />
             <div class="">

@@ -42,7 +42,7 @@ import CardItemList from "@/components/CardItemList.vue";
 import {inject} from "vue";
 // import CartItem from "./CartItem.vue";
 
-const {closeDrawer} = inject('cardActions')
+const {closeDrawer} = inject('card')
 
 
 </script>

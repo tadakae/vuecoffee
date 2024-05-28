@@ -27,8 +27,16 @@ const filters = reactive({
 })
 
 const addToCard = (item) => {
+  if(!item.isAdded) {
     card.value.push(item)
-    console.log(item)
+    item.isAdded = true
+  } else {
+    card.value.splice(
+      card.value.indexOf(item), 1)
+    item.isAdded = false
+  }
+  console.log(item)
+
 }
 
 
@@ -58,7 +66,8 @@ watch( ()=> filters, async () => {
     }
 })
 
-provide('cardActions', {
+provide('card', {
+    card,
     closeDrawer,
     openDrawer
 })

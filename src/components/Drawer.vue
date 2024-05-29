@@ -12,7 +12,7 @@
         <CardItemList/>
 
 
-        <div class=" flex flex-col gap-4 mb-5">
+        <div class=" flex flex-col gap-4 mb-5 mt-4">
             <div class=" flex gap-2 ">
               <span>
                   Итого:

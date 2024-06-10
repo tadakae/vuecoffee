@@ -1,36 +1,34 @@
 <template>
-    <div class="box  ml-10 mt-10 p-4 w-32 cursor-pointer rounded-md bg-orange-50 hover:bg-orange-100    ">
-        <img  :src="imageUrl" alt="" class="img w-24 h-24 rounded-xl">
+    <div class="box  m-auto mt-10 p-4 w-40  rounded-md     ">
+        <img  :src="imageUrl" alt="" class="img ml-4 w-24 h-24 rounded-xl">
 
 
-        <div class=" text-sm/[17px] mt-1  font-extralight text-center block">
-            <b class="mt-2 p-2">
-                {{Title}}
+        <div class=" flex ml-4 ">
+           <div class=" text-sm/[17px] mt-1  font-extralight ">
+            <b class="">
+                {{titlee}}
             </b>
+             <br>
             <span>
                 Цена:
             <b class="text-slate-600 ">
-                {{Price}}
+                {{price}}
             </b>
                 </span>
-        </div>
-        <button @click="onClickAdd" class=" ml-20 rounded-md mt-2 bg-orange-100 hover:bg-orange-100 active:bg-orange-200 ">
-            <svg width="20px" height="20px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-
-                <title>plus-square</title>
-                <desc>Created with Sketch Beta.</desc>
-                <defs>
-
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                    <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-100.000000, -1035.000000)" fill="#000000">
-                        <path d="M130,1063 C130,1064.1 129.104,1065 128,1065 L104,1065 C102.896,1065 102,1064.1 102,1063 L102,1039 C102,1037.9 102.896,1037 104,1037 L128,1037 C129.104,1037 130,1037.9 130,1039 L130,1063 L130,1063 Z M128,1035 L104,1035 C101.791,1035 100,1036.79 100,1039 L100,1063 C100,1065.21 101.791,1067 104,1067 L128,1067 C130.209,1067 132,1065.21 132,1063 L132,1039 C132,1036.79 130.209,1035 128,1035 L128,1035 Z M122,1050 L117,1050 L117,1045 C117,1044.45 116.552,1044 116,1044 C115.448,1044 115,1044.45 115,1045 L115,1050 L110,1050 C109.448,1050 109,1050.45 109,1051 C109,1051.55 109.448,1052 110,1052 L115,1052 L115,1057 C115,1057.55 115.448,1058 116,1058 C116.552,1058 117,1057.55 117,1057 L117,1052 L122,1052 C122.552,1052 123,1051.55 123,1051 C123,1050.45 122.552,1050 122,1050 L122,1050 Z" id="plus-square" sketch:type="MSShapeGroup">
-
-                        </path>
-                    </g>
-                </g>
+           </div>
+          <div @click="onClickAdd">
+            <svg class="cursor-pointer" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.5 4.5H5.05848C5.7542 4.5 6.10206 4.5 6.36395 4.68876C6.62584 4.87752 6.73584 5.20753 6.95585 5.86754L7.5 7.5" stroke="#222222" stroke-linecap="round"/>
+              <path d="M17.5 17.5H8.05091C7.90471 17.5 7.83162 17.5 7.77616 17.4938C7.18857 17.428 6.78605 16.8695 6.90945 16.2913C6.92109 16.2367 6.94421 16.1674 6.99044 16.0287V16.0287C7.04177 15.8747 7.06743 15.7977 7.09579 15.7298C7.38607 15.0342 8.04277 14.5608 8.79448 14.5054C8.8679 14.5 8.94906 14.5 9.11137 14.5H14.5" stroke="#222222" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14.1787 14.5H11.1376C9.85836 14.5 9.21875 14.5 8.71781 14.1697C8.21687 13.8394 7.96492 13.2515 7.461 12.0757L7.29218 11.6818C6.48269 9.79294 6.07794 8.84853 6.52255 8.17426C6.96715 7.5 7.99464 7.5 10.0496 7.5H15.3305C17.6295 7.5 18.779 7.5 19.2126 8.24711C19.6462 8.99422 19.0758 9.99229 17.9352 11.9884L17.6517 12.4846C17.0897 13.4679 16.8088 13.9596 16.3432 14.2298C15.8776 14.5 15.3113 14.5 14.1787 14.5Z" stroke="#222222" stroke-linecap="round"/>
+              <circle cx="17" cy="20" r="1" fill="#222222"/>
+              <circle cx="9" cy="20" r="1" fill="#222222"/>
             </svg>
-        </button>
+          </div>
+        </div>
+<!--        <button @click="onClickAdd" class=" ml-3 p-1 rounded-b-md text-amber-50 mt-2 bg-amber-600 hover:bg-amber-900 active:bg-slate-50 active:text-black ">-->
+<!--          Добавить-->
+<!--        </button>-->
     </div>
 
 </template>
@@ -38,9 +36,9 @@
 <script setup>
 defineProps({
     id: Number,
-    Title: String,
+    titlee: String,
     imageUrl: String,
-    Price: Number,
+    price: Number,
     isFavorite: Boolean,
     isAdded: Boolean,
     onClickFavorite: Function,

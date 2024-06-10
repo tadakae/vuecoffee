@@ -11,13 +11,13 @@ const emit =defineEmits(['addToCard'])
 
 
 <template>
-  <div class="grid grid-cols-6 ">
+  <div class="grid grid-cols-9 m-auto bg-orange-50 pb-40  ">
       <Card
               v-for="item in items"
               v-bind:key="item.id"
-              :Title="item.Title"
+              :titlee="item.titlee"
               :imageUrl="item.imageUrl"
-              :Price="item.Price"
+              :price="item.price"
               :onClickAdd="() => emit('addToCard', item)"
               :isAdded="item.isAdded"
       />

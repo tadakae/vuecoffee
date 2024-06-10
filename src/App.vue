@@ -6,6 +6,9 @@ import Header from '@/components/Header.vue'
 import CardList from '@/components/CardList.vue'
 import Drawer from '@/components/Drawer.vue'
 import Head from '@/components/Head.vue'
+import MainBox from '@/components/MainBox.vue'
+import Footer from '@/components/Footer.vue'
+import Group44 from '@/components/Group44.vue'
 
 const items = ref([])
 const card = ref([])
@@ -25,6 +28,9 @@ const filters = reactive({
   sortBy: '',
   searchQuery: ''
 })
+
+
+
 
 const addToCard = (item) => {
   card.value.push(item)
@@ -48,7 +54,7 @@ const onClickAddPlus = (item) => {
 }
 
 
-const onChangeSelect = event => {
+const onChangeSelect = (event) => {
   filters.sortBy = event.target.value
 }
 
@@ -63,7 +69,8 @@ onMounted(async () => {
   }
 })
 
-watch(() => filters, async () => {
+
+watch( filters, async () => {
   try {
     const { data } = await axios.get('https://8a5d97df2ab05859.mokky.dev/items?sortBy=' + filters.sortBy)
     items.value = data
@@ -83,11 +90,14 @@ provide('card', {
 </script>
 
 <template>
-  <div class="w-4/5 m-auto bg-white h-screen rounded-xl shadow-xl mt-14">
+  <div class="w-full  m-auto bg-orange-100 h-screen rounded-xl shadow-xl ">
     <Drawer v-if="drawerOpen" />
-    <Header @open-Drawer="openDrawer" />
+    <Header  @open-Drawer="openDrawer" />
+    <MainBox/>
     <Head :onChangeSelect="onChangeSelect" />
     <CardList :items="items" @add-to-card="onClickAddPlus" />
+    <Group44 />
+    <Footer />
 
   </div>
 </template>

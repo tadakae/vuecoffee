@@ -12,9 +12,9 @@ const {card, removeFromCard} = inject('card')
 
   <template>
     <CardItem v-for="item in card"  v-bind:key="item.id"
-              :Title="item.Title"
+              :titlee="item.titlee"
               :imageUrl="item.imageUrl"
-              :Price="item.Price"
+              :price="item.price"
               @on-click-remove="()=> removeFromCard(item)"
     />
 

@@ -1,5 +1,5 @@
 <template>
-    <header class="flex justify-between border-b-4 border-orange-900 -mt-24   fixed bg-orange-100 pl-8 py-3 w-full">
+    <header class="flex justify-between border-b-4 border-orange-900 -mt-24 font-sans   fixed bg-orange-100 pl-8 py-3 w-full">
         <div class="flex items-center gap-4 mr-60 p-2.5 rounded-2xl">
           <svg version="1.1" class="w-14" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                viewBox="0 0 512 512" xml:space="preserve">
@@ -29,14 +29,14 @@
             <path style="fill:#DBBC82;" d="M256,67.339v44.522H134.801c0-24.487,20.035-44.522,44.522-44.522H256z"/>
 </svg>
             <div class=" text-orange-900" >
-                <h2 class="text-xl font-bold uppercase">Vue Coffee</h2>
-                <p class="text-orange-900">Кофе и Коктейли</p>
+                <h2 class="text-xl font-bold uppercase font-sans">Vue Coffee</h2>
+                <p class="text-orange-900 font-mono md:font-mono">Кофе и Коктейли</p>
             </div>
         </div>
 
         <ul class="bg-orange-100 flex items-center gap-10   cursor-pointer mr-16">
-          <li  class=" text-orange-900 flex items-center pl-16  gap-4 ">
-            <svg width="35px" height="35px"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <li @click="() => emit('scrollTop')"  class=" text-orange-900 flex items-center pl-16  gap-4 ">
+            <svg  width="35px" height="35px"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.79 10.47V17.79C17.79 20.12 15.9 22 13.58 22H6.21C3.89 22 2 20.11 2 17.79V10.47C2 8.14001 3.89 6.26001 6.21 6.26001H13.58C15.9 6.26001 17.79 8.15001 17.79 10.47Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M5.5 4V2.25" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M9.5 4V2.25" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -72,10 +72,13 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['openDrawer'])
+const emit = defineEmits(['openDrawer, scrollTop'])
+
+
 
 </script>
 
 <style scoped>
+
 
 </style>

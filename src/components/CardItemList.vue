@@ -1,9 +1,9 @@
 <script setup>
 import { inject } from 'vue'
 import CardItem from '@/components/CardItem.vue'
-import Card from '@/components/Card.vue'
+// import Card from '@/components/Card.vue'
 
-const {card} = inject('card')
+const {card, removeFromCard} = inject('card')
 </script>
 
 
@@ -12,7 +12,10 @@ const {card} = inject('card')
 
   <template>
     <CardItem v-for="item in card"  v-bind:key="item.id"
-              :Title="item.Title"
+              :titlee="item.titlee"
               :imageUrl="item.imageUrl"
-              :Price="item.Price" />
+              :price="item.price"
+              @on-click-remove="()=> removeFromCard(item)"
+    />
+
   </template>

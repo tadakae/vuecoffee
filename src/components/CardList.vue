@@ -11,7 +11,7 @@ const emit =defineEmits(['addToCard'])
 
 
 <template>
-  <div class="grid grid-cols-9 m-auto bg-orange-50 pb-40  ">
+  <div class="grid grid-cols-8 bg-orange-50 pb-40 ">
       <Card
               v-for="item in items"
               v-bind:key="item.id"

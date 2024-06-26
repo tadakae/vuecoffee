@@ -2,17 +2,12 @@
 import { onMounted, provide, reactive, ref, watch } from 'vue'
 import axios from 'axios'
 
-
-
 import Header from '@/components/Header.vue'
 import CardList from '@/components/CardList.vue'
 import Drawer from '@/components/Drawer.vue'
 import Head from '@/components/Head.vue'
 import MainBox from '@/components/MainBox.vue'
 import Footer from '@/components/Footer.vue'
-import Group44 from '@/components/Group44.vue'
-
-
 
 const items = ref([])
 const card = ref([])
@@ -83,17 +78,12 @@ watch( filters, async () => {
   }
 })
 
-const scrollTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
 provide('card', {
   card,
   addToCard,
   closeDrawer,
   openDrawer,
   removeFromCard,
-  scrollTop,
 })
 
 </script>
@@ -101,11 +91,10 @@ provide('card', {
 <template>
   <div class="w-full  m-auto bg-orange-100 h-screen rounded-xl shadow-xl ">
     <Drawer v-if="drawerOpen" />
-    <Header  @open-Drawer="openDrawer" />
+    <Header @open-Drawer="openDrawer" />
     <MainBox/>
     <Head :onChangeSelect="onChangeSelect" />
     <CardList :items="items" @add-to-card="onClickAddPlus" />
-    <Group44 />
     <Footer />
 
   </div>

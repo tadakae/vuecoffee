@@ -1,6 +1,7 @@
 <script setup>
-import { onMounted, provide, reactive, ref, watch } from 'vue'
+import { computed, onMounted, provide, reactive, ref, watch } from 'vue'
 import axios from 'axios'
+
 
 import Header from '@/components/Header.vue'
 import CardList from '@/components/CardList.vue'
@@ -13,6 +14,33 @@ const items = ref([])
 const card = ref([])
 
 const drawerOpen = ref(false)
+
+
+
+
+const createOrder = async () => {
+  try {
+    const { data } = await axios.post(`https://8a5d97df2ab05859.mokky.dev/orders`, {
+      items: card.value,
+      totalPrice: totalPrice.value
+    })
+    card.value = []
+
+    return data
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+
+
+const totalPrice = computed(
+  () =>  card.value.reduce((acc, item) => acc + item.price, 0)
+)
+
+const vatPrice = computed(() => Math.round((totalPrice.value * 5)) / 100)
+
 
 const openDrawer = () => {
   drawerOpen.value = true
@@ -45,8 +73,6 @@ const removeFromCard = (item) => {
 const onClickAddPlus = (item) => {
   if (!item.isAdded) {
     addToCard(item)
-  } else {
-    removeFromCard(item)
   }
 
 
@@ -89,13 +115,14 @@ provide('card', {
 </script>
 
 <template>
-  <div class="w-full  m-auto bg-orange-100 h-screen rounded-xl shadow-xl ">
-    <Drawer v-if="drawerOpen" />
-    <Header @open-Drawer="openDrawer" />
+  <div class="w-full  m-auto bg-gray-100 h-screen rounded-xl shadow-xl ">
+    <Drawer @create-order="createOrder" :vat-price="vatPrice" :total-price="totalPrice" v-if="drawerOpen" />
+    <Header :total-price="totalPrice" @open-Drawer="openDrawer" />
     <MainBox/>
     <Head :onChangeSelect="onChangeSelect" />
     <CardList :items="items" @add-to-card="onClickAddPlus" />
     <Footer />
+    <router-view />
 
   </div>
 </template>

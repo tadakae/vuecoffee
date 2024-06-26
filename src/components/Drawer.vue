@@ -1,6 +1,6 @@
 <template>
     <div class=" fixed top-0 left-0 h-full font-sans w-full bg-black z-10 opacity-50"></div>
-    <div class=" bg-white w-96 h-full fixed right-0 top-0 z-20 p-8">
+    <div class=" bg-slate-100 w-96 h-full fixed right-0 top-0 z-20 p-8">
         <div class=" flex">
             <svg @click='closeDrawer' width="30px" height="30px" class=" mr-3 cursor-pointer " viewBox="0 0 24 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -18,19 +18,19 @@
                   Итого:
               </span>
                 <div class=" flex-1 border-b border-dashed"></div>
-                <b>790$</b>
+                <b>{{totalPrice}}</b>
             </div>
         </div>
         <div class=" mb-5">
             <div class=" flex ">
               <span>
-                  Налог 100%:
+                  Налог 5%:
               </span>
                 <div class=" flex-1 border-b border-dashed"></div>
-                <b>790$</b>
+                <b>{{vatPrice}}</b>
             </div>
         </div>
-        <button class=" transition bg-orange-50 w-full rounded-xl py-3 hover:bg-orange-100 active:bg-orange-200">
+        <button :disabled="totalPrice ? false : true" @click="() => emit('createOrder')" class=" transition bg-white w-full rounded-xl py-3 hover:bg-blue-100 active:bg-blue-200">
             Оформить Заказ
         </button>
     </div>
@@ -43,6 +43,14 @@ import {inject} from "vue";
 // import CartItem from "./CartItem.vue";
 
 const {closeDrawer} = inject('card')
+
+defineProps({
+  totalPrice: Number,
+  vatPrice : Number
+})
+
+const emit = defineEmits(["createOrder"])
+
 
 
 </script>

@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-    <div class=" p-10  bg-orange-50 ">
+    <div class=" p-10  bg-gray-100 ">
         <div class=" flex justify-between ">
             <div class="relative pr-12">
 <!--                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">-->

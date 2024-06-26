@@ -1,5 +1,5 @@
 <template>
-    <header class="flex justify-between    bg-orange-100 pl-8 py-8 w-full">
+    <header class="flex justify-between    bg-white pl-8 py-3 fixed -mt-24 border-b4 border-2 w-full">
         <div class="flex items-center gap-4 mr-60 p-2.5 rounded-2xl">
           <svg version="1.1" class="w-14" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                viewBox="0 0 512 512" xml:space="preserve">
@@ -28,14 +28,14 @@
 </g>
             <path style="fill:#DBBC82;" d="M256,67.339v44.522H134.801c0-24.487,20.035-44.522,44.522-44.522H256z"/>
 </svg>
-            <div class=" text-orange-900" >
+            <div class=" " >
                 <h2 class="text-xl font-bold uppercase">vue coffee</h2>
-                <p class="text-orange-900">Кофе и Коктейли</p>
+                <p class="">Кофе и Коктейли</p>
             </div>
         </div>
 
-        <ul class="bg-orange-100 flex items-center gap-10  cursor-pointer mr-16">
-          <li class=" text-orange-900 flex items-center pl-16  gap-4 ">
+        <ul class="bg-white flex items-center gap-10  cursor-pointer mr-16">
+          <li class="  flex items-center pl-16  gap-4 ">
             <svg width="35px" height="35px"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.79 10.47V17.79C17.79 20.12 15.9 22 13.58 22H6.21C3.89 22 2 20.11 2 17.79V10.47C2 8.14001 3.89 6.26001 6.21 6.26001H13.58C15.9 6.26001 17.79 8.15001 17.79 10.47Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M5.5 4V2.25" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,7 +47,7 @@
             Главная
           </li>
 
-            <li @click="() => emit('openDrawer')"  class="flex items-center text-orange-900  gap-2">
+            <li @click="() => emit('openDrawer')"  class="flex items-center   ">
               <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.5 4.5H5.05848C5.7542 4.5 6.10206 4.5 6.36395 4.68876C6.62584 4.87752 6.73584 5.20753 6.95585 5.86754L7.5 7.5" stroke="#222222" stroke-linecap="round"/>
                 <path d="M17.5 17.5H8.05091C7.90471 17.5 7.83162 17.5 7.77616 17.4938C7.18857 17.428 6.78605 16.8695 6.90945 16.2913C6.92109 16.2367 6.94421 16.1674 6.99044 16.0287V16.0287C7.04177 15.8747 7.06743 15.7977 7.09579 15.7298C7.38607 15.0342 8.04277 14.5608 8.79448 14.5054C8.8679 14.5 8.94906 14.5 9.11137 14.5H14.5" stroke="#222222" stroke-linecap="round" stroke-linejoin="round"/>
@@ -55,9 +55,12 @@
                 <circle cx="17" cy="20" r="1" fill="#222222"/>
                 <circle cx="9" cy="20" r="1" fill="#222222"/>
               </svg>
-              Корзина
+              {{totalPrice}} тг
             </li>
-            <li class="flex items-center gap-4 text-orange-900     ">
+
+
+
+            <li class="flex items-center gap-4   ">
               <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 12C9 12.5523 8.55228 13 8 13C7.44772 13 7 12.5523 7 12C7 11.4477 7.44772 11 8 11C8.55228 11 9 11.4477 9 12Z" fill="#1C274C"/>
                 <path d="M13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12Z" fill="#1C274C"/>
@@ -72,7 +75,17 @@
 </template>
 
 <script setup>
+
+defineProps({
+  totalPrice: Number,
+  vatPrice : Number
+
+})
+
+
 const emit = defineEmits(['openDrawer'])
+
+
 
 </script>
 

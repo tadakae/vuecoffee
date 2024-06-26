@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <div class=" border border-slate-100 p-4 rounded-xl bg-orange-50 mt-5 flex items-center gap-4">
+  <div class=" border border-slate-100 p-4 rounded-xl bg-white mt-5 flex items-center gap-4">
     <img :src="imageUrl" class=" w-16 h-16 rounded-xl" alt="">
     <div class="  flex flex-col w-52">
       <p>{{ titlee }}</p>

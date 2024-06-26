@@ -3,11 +3,11 @@
 </script>
 
 <template>
-<div class="w-full h-3/4 flex mt-24 " >
+<div class="w-full h-3/4 flex mt-24 bg-white " >
   <div>
   <div class="flex mt-10 " >
   <h1 class="text-6xl  pt-44  pl-40">Enjoy your</h1>
-  <h1 class="text-6xl  pt-44 pl-3 pr-60 text-orange-400">coffee </h1>
+  <h1 class="text-6xl  pt-44 pl-3 pr-60 ">coffee </h1>
   </div>
   <h1 class="text-6xl pl-40"> before your activity</h1>
   </div>

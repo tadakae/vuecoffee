@@ -112,6 +112,19 @@ provide('card', {
   removeFromCard,
 })
 
+watch(
+  card,
+  () => {
+    localStorage.setItem('card', JSON.stringify(card.value))
+  },
+  {deep: true}
+)
+
+onMounted(async () => {
+  const localCard = localStorage.getItem('card')
+  card.value = localCard ? JSON.parse(localCard) : []
+})
+
 </script>
 
 <template>

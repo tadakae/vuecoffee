@@ -12,6 +12,7 @@ const emit =defineEmits(['addToCard'])
 
 <template>
   <div class="hidden md:block">
+
   <div class="grid grid-cols-5 bg-slate-50 pb-40 " v-auto-animate >
       <Card
               v-for="item in items"

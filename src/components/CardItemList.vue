@@ -11,11 +11,13 @@ const {card, removeFromCard} = inject('card')
 
 
   <template>
+    <div v-auto-animate >
     <CardItem v-for="item in card"  v-bind:key="item.id"
               :titlee="item.titlee"
               :imageUrl="item.imageUrl"
               :price="item.price"
               @on-click-remove="()=> removeFromCard(item)"
     />
+    </div>
 
   </template>

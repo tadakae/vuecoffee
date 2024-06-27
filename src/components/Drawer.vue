@@ -1,6 +1,6 @@
 <template>
     <div class=" fixed top-0 left-0 h-full font-sans w-full bg-black z-10 opacity-50"></div>
-    <div class=" bg-slate-100 w-96 h-full fixed right-0 top-0 z-20 p-8">
+    <div class="  bg-slate-100  fixed right-0 top-0 z-20 p-8 md:w-96 h-full w-full ">
         <div class=" flex">
             <svg @click='closeDrawer' width="30px" height="30px" class=" mr-3 cursor-pointer " viewBox="0 0 24 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,7 @@
                   Итого:
               </span>
                 <div class=" flex-1 border-b border-dashed"></div>
-                <b>{{totalPrice}}</b>
+                <b>{{totalPrice}}тг</b>
             </div>
         </div>
         <div class=" mb-5">
@@ -27,7 +27,7 @@
                   Налог 5%:
               </span>
                 <div class=" flex-1 border-b border-dashed"></div>
-                <b>{{vatPrice}}</b>
+                <b>{{vatPrice}}тг</b>
             </div>
         </div>
         <button :disabled="totalPrice ? false : true" @click="() => emit('createOrder')" class=" transition bg-white w-full rounded-xl py-3 hover:bg-blue-100 active:bg-blue-200">

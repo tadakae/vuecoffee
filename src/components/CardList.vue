@@ -11,7 +11,8 @@ const emit =defineEmits(['addToCard'])
 
 
 <template>
-  <div class="grid grid-cols-5 bg-slate-50 pb-40 ">
+  <div class="hidden md:block">
+  <div class="grid grid-cols-5 bg-slate-50 pb-40 " v-auto-animate >
       <Card
               v-for="item in items"
               v-bind:key="item.id"
@@ -21,7 +22,21 @@ const emit =defineEmits(['addToCard'])
               :onClickAdd="() => emit('addToCard', item)"
               :isAdded="item.isAdded"
       />
-
   </div>
+  </div>
+
+<div class="md:hidden  ">
+  <div class=" grid grid-cols-2 bg-slate-50 pb-24  " v-auto-animate >
+    <Card
+      v-for="item in items"
+      v-bind:key="item.id"
+      :titlee="item.titlee"
+      :imageUrl="item.imageUrl"
+      :price="item.price"
+      :onClickAdd="() => emit('addToCard', item)"
+      :isAdded="item.isAdded"
+    />
+  </div>
+</div>
 
 </template>

@@ -36,7 +36,8 @@
                 <p class="">Кофе и Коктейли</p>
             </div>
         </div>
-
+       <router-link to="/home"><el-button></el-button> </router-link>
+      <router-view></router-view>
         <ul class="bg-white flex items-center gap-10  cursor-pointer mr-16">
           <div class=" md:block hidden">
 
@@ -55,6 +56,7 @@
 
         </ul>
     </header>
+
   </div>
 
 

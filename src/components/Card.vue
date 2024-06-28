@@ -24,11 +24,12 @@
 
 <!--  mobile-->
   <div class="md:hidden">
-  <div class=" box  active:bg-gray-100 m-auto mt-10 p-4  w-36  border-0 rounded-md bg-white  ">
+  <div class=" box  active:bg-gray-100 m-auto h-64 mt-10 p-4  w-36 border-0 rounded-2xl bg-white  ">
     <img  :src="imageUrl" alt="" class="img w-24 h-24 ml-2 rounded-xl">
 
 
     <div class=" text-sm/[17px] mt-3     font-extralight ">
+
       <b class="mt-2 p-2">
         {{titlee}}
       </b>

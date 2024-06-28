@@ -27,7 +27,7 @@ const emit =defineEmits(['addToCard'])
   </div>
 
 <div class="md:hidden  ">
-  <div class=" grid grid-cols-2 bg-slate-50 pb-24  " v-auto-animate >
+  <div class=" grid grid-cols-2 gap-0  bg-slate-50 pb-24  " v-auto-animate >
     <Card
       v-for="item in items"
       v-bind:key="item.id"

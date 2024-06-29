@@ -128,11 +128,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full  m-auto bg-gray-100 h-screen rounded-xl shadow-xl ">
+  <div class="w-full   m-auto bg-slate-50 h-screen ">
     <Drawer @create-order="createOrder" :vat-price="vatPrice" :total-price="totalPrice" v-if="drawerOpen" />
     <Header :total-price="totalPrice" @open-Drawer="openDrawer" />
     <MainBox/>
-    <Head :onChangeSelect="onChangeSelect" />
+<!--    <Head :onChangeSelect="onChangeSelect" />-->
     <CardList :items="items" @add-to-card="onClickAddPlus" />
     <Footer />
   </div>

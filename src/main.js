@@ -17,8 +17,8 @@ import Home from '@/components/Home.vue'
 import Register from '@/pages/Register.vue'
 
 const routes = [
-  { path: '/', name: 'Reg', component: Register },
-  { path: '/Home', name: 'App', component: Home },
+  { path: '/reg', name: 'Reg', component: Register },
+  { path: '/', name: 'App', component: Home },
   { path: '/login', name: 'auth', component: Auth },
 ]
 

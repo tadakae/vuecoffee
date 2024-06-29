@@ -23,9 +23,9 @@
   </div>
 
 <!--  mobile-->
-  <div class="md:hidden">
-  <div class=" box  active:bg-gray-100 m-auto h-64 mt-10 p-4  w-36 border-0 rounded-2xl bg-white  ">
-    <img  :src="imageUrl" alt="" class="img w-24 h-24 ml-2 rounded-xl">
+  <div class="md:hidden mt-32">
+  <div class=" box  active:border-black border-2 m-auto h-36  p-4  w-36  rounded-2xl   bg-[#B4AAAB] text-amber-50 ">
+    <img  :src="imageUrl" alt="" class="img w-16 h-16 ml-2 rounded-xl">
 
 
     <div class=" text-sm/[17px] mt-3     font-extralight ">
@@ -34,7 +34,7 @@
         {{titlee}}
       </b>
       <div @click="onClickAdd"  class=" flex justify-between"  >
-        <b class="text-slate-600 mt-3 ml-2 ">
+        <b class="text-amber-50 mt-3 ml-2 ">
           {{price}}тг
         </b>
         <svg class="cursor-pointer" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

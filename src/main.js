@@ -14,10 +14,8 @@ import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Auth from '@/pages/Auth.vue'
 import Home from '@/components/Home.vue'
-import Register from '@/pages/Register.vue'
 
 const routes = [
-  { path: '/reg', name: 'Reg', component: Register },
   { path: '/', name: 'App', component: Home },
   { path: '/login', name: 'auth', component: Auth },
 ]

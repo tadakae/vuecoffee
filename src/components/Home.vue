@@ -128,7 +128,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full   m-auto bg-slate-50 h-screen ">
+  <div class="w-full   m-auto bg-slate-50  ">
     <Drawer @create-order="createOrder" :vat-price="vatPrice" :total-price="totalPrice" v-if="drawerOpen" />
     <Header :total-price="totalPrice" @open-Drawer="openDrawer" />
     <MainBox/>

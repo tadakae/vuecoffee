@@ -5,12 +5,10 @@
 
     <div class="">
     <input class="mt-64 p-2 ml-8 " type="text" v-model="username" placeholder="Username" required>
-    <input class=" mt-3 p-2 ml-8 " type="email" v-model="email" placeholder="Email" required>
-    <input class=" mt-3 p-2 ml-8 " type="password" v-model="password" placeholder="Password" required>
     </div>
 
 
-      <button class="ml-40  mt-3" type="submit">Register</button>
+      <button class="ml-40  mt-3" type="submit"></button>
 
   </form>
   </div>

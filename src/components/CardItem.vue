@@ -15,11 +15,11 @@ defineProps({
 </script>
 
 <template>
-  <div class=" border border-slate-100 p-4 rounded-xl bg-white mt-5 flex items-center gap-4">
-    <img :src="imageUrl" class=" w-16 h-16 rounded-xl" alt="">
-    <div class="  flex flex-col w-full">
+  <div class=" border border-slate-100 p-4 rounded-xl bg-white mt-5 flex items-center ">
+    <img :src="imageUrl" class=" -ml-4 -mt-2 w-24 h-16 rounded-xl" alt="">
+    <div class="  flex flex-col w-full pt-2 ">
       <p>{{ titlee }}</p>
-      <div class=" flex justify-between  mt-2">
+      <div class=" flex justify-between  ">
         <b>{{ price }} тг</b>
         <svg @click="emit('onClickRemove')" class=" cursor-pointer opacity-40 hover:opacity-100" width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10.0303 8.96967C9.73741 8.67678 9.26253 8.67678 8.96964 8.96967C8.67675 9.26256 8.67675 9.73744 8.96964 10.0303L10.9393 12L8.96966 13.9697C8.67677 14.2626 8.67677 14.7374 8.96966 15.0303C9.26255 15.3232 9.73743 15.3232 10.0303 15.0303L12 13.0607L13.9696 15.0303C14.2625 15.3232 14.7374 15.3232 15.0303 15.0303C15.3232 14.7374 15.3232 14.2625 15.0303 13.9697L13.0606 12L15.0303 10.0303C15.3232 9.73746 15.3232 9.26258 15.0303 8.96969C14.7374 8.6768 14.2625 8.6768 13.9696 8.96969L12 10.9394L10.0303 8.96967Z" fill="#1C274C"/>

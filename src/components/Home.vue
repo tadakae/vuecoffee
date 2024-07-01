@@ -9,6 +9,7 @@ import Drawer from '@/components/Drawer.vue'
 import Head from '@/components/Head.vue'
 import MainBox from '@/components/MainBox.vue'
 import Footer from '@/components/Footer.vue'
+import Orders from '@/pages/Orders.vue'
 
 const items = ref([])
 const card = ref([])
@@ -18,12 +19,16 @@ const drawerOpen = ref(false)
 
 
 
+
+
+
 const createOrder = async () => {
   try {
     const { data } = await axios.post(`https://8a5d97df2ab05859.mokky.dev/orders`, {
       items: card.value,
-      totalPrice: totalPrice.value
+      totalPrice: totalPrice.value,
     })
+
     card.value = []
 
     return data
@@ -61,7 +66,6 @@ const filters = reactive({
 
 const addToCard = (item) => {
   card.value.push(item)
-  item.isAdded = true
 }
 
 const removeFromCard = (item) => {
@@ -128,12 +132,16 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full   m-auto bg-slate-50  ">
+  <div class="w-full   m-auto bg-slate-50   " >
     <Drawer @create-order="createOrder" :vat-price="vatPrice" :total-price="totalPrice" v-if="drawerOpen" />
+
     <Header :total-price="totalPrice" @open-Drawer="openDrawer" />
+
     <MainBox/>
 <!--    <Head :onChangeSelect="onChangeSelect" />-->
+
     <CardList :items="items" @add-to-card="onClickAddPlus" />
+
     <Footer />
   </div>
 </template>

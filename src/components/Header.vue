@@ -38,10 +38,12 @@
         </div>
        <router-link to="/home"><el-button></el-button> </router-link>
       <router-view></router-view>
+
         <ul class="bg-white flex items-center gap-10  cursor-pointer mr-16">
           <div class=" md:block hidden">
 
           </div>
+
 
             <li @click="() => emit('openDrawer')"  class="flex items-center   " >
               <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,14 +93,13 @@
         <path style="fill:#DBBC82;" d="M256,67.339v44.522H134.801c0-24.487,20.035-44.522,44.522-44.522H256z"/>
 </svg>
       <div class=" " >
-        <h2 class="font-bold uppercase">vue <br> coffee</h2>
+        <h2 class="font-bold ">Q19 <br> coffee</h2>
         <p class=" hidden md:block">Кофе и Коктейли</p>
       </div>
     </div>
 
     <ul class="bg-white flex  cursor-pointer ">
-
-      <li @click="() => emit('openDrawer')"  class="flex items-center mr-6  ">
+      <li @click="() => emit('openDrawer')"  class="flex items-center mr-10  ">
         <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M3.5 4.5H5.05848C5.7542 4.5 6.10206 4.5 6.36395 4.68876C6.62584 4.87752 6.73584 5.20753 6.95585 5.86754L7.5 7.5" stroke="#222222" stroke-linecap="round"/>
           <path d="M17.5 17.5H8.05091C7.90471 17.5 7.83162 17.5 7.77616 17.4938C7.18857 17.428 6.78605 16.8695 6.90945 16.2913C6.92109 16.2367 6.94421 16.1674 6.99044 16.0287V16.0287C7.04177 15.8747 7.06743 15.7977 7.09579 15.7298C7.38607 15.0342 8.04277 14.5608 8.79448 14.5054C8.8679 14.5 8.94906 14.5 9.11137 14.5H14.5" stroke="#222222" stroke-linecap="round" stroke-linejoin="round"/>

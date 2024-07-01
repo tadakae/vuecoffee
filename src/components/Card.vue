@@ -23,25 +23,19 @@
   </div>
 
 <!--  mobile-->
-  <div class="md:hidden mt-3">
-  <div @click="onClickAdd"  class=" box  active:border-black border-2 m-auto h-40  p-4  w-36  rounded-2xl   bg-[#B4AAAB] text-amber-50 ">
-    <img  :src="imageUrl" alt="" class="img w-16 h-16 ml-2 rounded-xl">
-
-
-    <div class=" text-sm/[17px] mt-3     font-extralight ">
-
-      <b class="mt-2 p-2">
-        {{titlee}}
-      </b>
-      <div  class=" flex justify-between"  >
-        <b class="text-amber-50 mt-3 ml-2 ">
-          {{price}}тг
-        </b>
-        <el-icon><Handbag /></el-icon>
-
+  <div class="md:hidden mt-3 ">
+    <div class=" border border-slate-100 p-4 rounded-xl bg-white  flex items-center gap-4">
+      <img :src="imageUrl" class=" w-16 h-16 rounded-xl" alt="">
+      <div class="  flex flex-col w-52 mt-3">
+        <p>{{ titlee }}</p>
+        <div class=" flex justify-between mt-2">
+          <b>{{ price }} тг</b>
+          <el-button @click="onClickAdd" class="  ">
+            Добавить
+          </el-button>
+        </div>
       </div>
     </div>
-  </div>
   </div>
   <!--  mobile-->
 

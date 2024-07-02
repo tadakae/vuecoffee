@@ -55,9 +55,6 @@ import HeadDr from './HeadDr.vue'
 import CardItemList from '@/components/CardItemList.vue'
 import { inject, ref } from 'vue'
 import InfoBlock from '@/components/InfoBlock.vue'
-import Card from '@/components/Card.vue'
-import NameUs from '@/components/NameUs.vue'
-// import CartItem from "./CartItem.vue";
 import axios from 'axios'
 
 const { closeDrawer } = inject('card')

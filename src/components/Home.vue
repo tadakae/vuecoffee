@@ -6,10 +6,8 @@ import axios from 'axios'
 import Header from '@/components/Header.vue'
 import CardList from '@/components/CardList.vue'
 import Drawer from '@/components/Drawer.vue'
-import Head from '@/components/Head.vue'
 import MainBox from '@/components/MainBox.vue'
 import Footer from '@/components/Footer.vue'
-import Orders from '@/pages/Orders.vue'
 
 const items = ref([])
 const card = ref([])
@@ -62,11 +60,14 @@ const filters = reactive({
 })
 
 
+  const cartItemCount = ref(0)
 
 
-const addToCard = (item) => {
-  card.value.push(item)
-}
+
+  const addToCard = (item) => {
+    card.value.push(item)
+
+  }
 
 const removeFromCard = (item) => {
   card.value.splice(
@@ -78,14 +79,15 @@ const onClickAddPlus = (item) => {
   if (!item.isAdded) {
     addToCard(item)
   }
+  cartItemCount.value++
 
 
 }
 
 
-const onChangeSelect = (event) => {
-  filters.sortBy = event.target.value
-}
+// const onChangeSelect = (event) => {
+//   filters.sortBy = event.target.value
+// }
 
 
 onMounted(async () => {
@@ -133,6 +135,7 @@ onMounted(async () => {
 
 <template>
   <div class="w-full   m-auto bg-slate-50   " >
+    <div class="mt-36"><button>click: {{cartItemCount}}</button></div>
     <Drawer @create-order="createOrder" :vat-price="vatPrice" :total-price="totalPrice" v-if="drawerOpen" />
 
     <Header :total-price="totalPrice" @open-Drawer="openDrawer" />
@@ -141,6 +144,7 @@ onMounted(async () => {
 <!--    <Head :onChangeSelect="onChangeSelect" />-->
 
     <CardList :items="items" @add-to-card="onClickAddPlus" />
+
 
     <Footer />
   </div>

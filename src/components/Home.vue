@@ -14,7 +14,7 @@ const card = ref([])
 
 const drawerOpen = ref(false)
 
-
+const showModal = ref(false)
 
 
 
@@ -66,7 +66,7 @@ const filters = reactive({
 
   const addToCard = (item) => {
     card.value.push(item)
-
+    showModal.value = true
   }
 
 const removeFromCard = (item) => {
@@ -148,7 +148,7 @@ onMounted(async () => {
     <MainBox/>
 <!--    <Head :onChangeSelect="onChangeSelect" />-->
 
-    <CardList   :items="items" @add-to-card="onClickAddPlus" />
+    <CardList :cart-item-count="cartItemCount" :show-modal="showModal" :items="items" @add-to-card="onClickAddPlus" />
 
 
     <Footer />

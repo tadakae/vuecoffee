@@ -70,9 +70,14 @@ const filters = reactive({
   }
 
 const removeFromCard = (item) => {
+  if (cartItemCount.value > 0) {
+    cartItemCount.value--;
+  }
   card.value.splice(
     card.value.indexOf(item), 1)
   item.isAdded = false
+
+
 }
 
 const onClickAddPlus = (item) => {
@@ -116,6 +121,7 @@ provide('card', {
   closeDrawer,
   openDrawer,
   removeFromCard,
+
 })
 
 watch(
@@ -135,7 +141,6 @@ onMounted(async () => {
 
 <template>
   <div class="w-full   m-auto bg-slate-50   " >
-    <div class="mt-36"><button>click: {{cartItemCount}}</button></div>
     <Drawer @create-order="createOrder" :vat-price="vatPrice" :total-price="totalPrice" v-if="drawerOpen" />
 
     <Header :total-price="totalPrice" @open-Drawer="openDrawer" />
@@ -143,7 +148,7 @@ onMounted(async () => {
     <MainBox/>
 <!--    <Head :onChangeSelect="onChangeSelect" />-->
 
-    <CardList :items="items" @add-to-card="onClickAddPlus" />
+    <CardList   :items="items" @add-to-card="onClickAddPlus" />
 
 
     <Footer />

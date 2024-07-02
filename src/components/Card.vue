@@ -73,6 +73,9 @@
 </template>
 
 <script setup>
+
+
+
 defineProps({
   id: Number,
   titlee: String,
@@ -80,9 +83,11 @@ defineProps({
   price: Number,
   isFavorite: Boolean,
   isAdded: Boolean,
-  onClickFavorite: Function,
-  onClickAdd: Function
+  onClickAdd: Function,
+  cartItemCount: Function,
 })
+
+
 
 </script>
 

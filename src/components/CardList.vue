@@ -4,6 +4,7 @@ import Card from '@/components/Card.vue'
 
 defineProps({
   items: Array,
+  cartItemCount: Array
 })
 const emit = defineEmits(['addToCard'])
 
@@ -26,10 +27,9 @@ const emit = defineEmits(['addToCard'])
     </div>
   </div>
 
-  <div class="md:hidden w-full h-screen m-auto  ">
+  <div   class="md:hidden w-full h-screen m-auto  ">
     <div class=" card-list" v-auto-animate>
       <Card
-
         v-for="(item) in items"
         v-bind:key="item.id"
         :titlee="item.titlee"
@@ -38,7 +38,7 @@ const emit = defineEmits(['addToCard'])
         :onClickAdd="() => emit('addToCard', item)"
         :isAdded="item.isAdded"
         class="card"
-      />
+       />
     </div>
   </div>
 

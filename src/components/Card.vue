@@ -68,10 +68,10 @@
    </div>
 
    <!--  mobile-->
-   <div v-if="showModal" >
-     <span @click="removeFromCard">---</span>
-     <span>{{cartItemCount}}</span>
-     <span @click="onClickAdd" >+</span>
+   <div v-if="showModal" class="flex w-full px-[30px] py-1 justify-between items-center text-[18px]">
+     <span @click="removeFromCard" class="w-[30px] h-full text-center">−</span>
+     <span class="w-[30px] h-full text-center">{{cartItemCount}}</span>
+     <span @click="onClickAdd" class="w-[30px] h-full text-center">+</span>
    </div>
  </div>
 

@@ -16,7 +16,6 @@ const drawerOpen = ref(false)
 
 const showModal = ref(false)
 
-
 const createOrder = async () => {
   try {
     const { data } = await axios.post(`https://8a5d97df2ab05859.mokky.dev/orders`, {
@@ -56,17 +55,21 @@ const filters = reactive({
 })
 
 
-const cartItemCount = ref(0)
+const quantities = ref({})
 
 
 const addToCard = (item) => {
   card.value.push(item)
+  item.isAdded = true
   showModal.value = true
 }
 
 const removeFromCard = (item) => {
-  if (cartItemCount.value > 0) {
-    cartItemCount.value--
+  if (quantities.value[item] > 0) {
+    quantities.value[item]--
+    if (quantities.value[item] === 0) {
+      showModal.value = false
+    }
   }
   card.value.splice(
     card.value.indexOf(item), 1)
@@ -127,6 +130,12 @@ watch(
   },
   { deep: true }
 )
+
+watch(cartItemCount, (newQuantity) => {
+  if (newQuantity === 0) {
+    showModal.value = false;
+  }
+});
 
 onMounted(async () => {
   const localCard = localStorage.getItem('card')

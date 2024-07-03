@@ -1,6 +1,6 @@
 <template>
-  <div class=" fixed top-0 left-0 h-full font-sans w-full bg-black z-10 opacity-50"></div>
-  <div class=" overflow-y-auto  bg-slate-100  fixed right-0 top-0 z-20 p-8 md:w-96 h-full w-full ">
+  <div class=" fixed  top-0 left-0 h-full font-sans w-full bg-black z-10 opacity-50"></div>
+  <div class=" overflow-y-auto  bg-slate-100  fixed right-0  top-0 z-20 p-8 md:w-96 h-full w-full ">
     <div class=" flex mt-16">
       <svg @click='closeDrawer' width="30px" height="30px" class=" mr-3 cursor-pointer " viewBox="0 0 24 24" fill="none"
            xmlns="http://www.w3.org/2000/svg">

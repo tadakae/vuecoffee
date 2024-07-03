@@ -66,13 +66,21 @@
        </div>
      </div>
    </div>
-   <!--  mobile-->
 
+   <!--  mobile-->
+     <span @click="removeFromCard">---</span>
+     <span>{{cartItemCount}}</span>
+     <span @click="onClickAdd" >+</span>
  </div>
+
 
 </template>
 
 <script setup>
+
+import { inject } from 'vue'
+
+const { cartItemCount,  removeFromCard } = inject('card')
 
 
 

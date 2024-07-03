@@ -16,11 +16,12 @@
 
     <InfoBlock v-if="!totalPrice" titlee="Корзина пустая" description="Добавьте пару кофе, что бы оформить заказ"
                image-url="https://i.imgur.com/9fD0UAA.png" />
-    <input class=" p-2 rounded-xl pl-5 mb-2 mt-8 w-full"  v-model="name" type="text" placeholder="Введите ваше имя">
+
 
     <CardItemList v-if="totalPrice" />
 
     <div v-if="totalPrice">
+      <input class=" p-2 rounded-xl  pl-5 mb-2 mt-8 w-full"   v-model="name" type="text" placeholder="Введите свое имя">
       <div class=" flex flex-col gap-4 mb-5 mt-4">
 <!--        <NameUs/>-->
         <div class=" flex gap-2 ">
@@ -80,6 +81,8 @@ const saveName = async () => {
     console.error(err);
   }
 };
+
+
 
 
 

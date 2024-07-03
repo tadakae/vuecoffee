@@ -16,7 +16,6 @@ const drawerOpen = ref(false)
 
 const showModal = ref(false)
 
-
 const createOrder = async () => {
   try {
     const { data } = await axios.post(`https://8a5d97df2ab05859.mokky.dev/orders`, {
@@ -56,17 +55,24 @@ const filters = reactive({
 })
 
 
-const cartItemCount = ref(0)
-
+const quantities = ref({})
+const selectedItem = ref(null);
 
 const addToCard = (item) => {
   card.value.push(item)
+  quantities.value[item.id] = (quantities.value[item.id] || 0) + 1;
+  item.isAdded = true
   showModal.value = true
+  selectedItem.value = item
 }
 
 const removeFromCard = (item) => {
-  if (cartItemCount.value > 0) {
-    cartItemCount.value--
+  if (quantities.value[item.id] > 0) {
+    quantities.value[item]--
+    if (quantities.value[item.id] === 0) {
+      showModal.value = false
+      item.isAdded = false
+    }
   }
   card.value.splice(
     card.value.indexOf(item), 1)
@@ -76,15 +82,15 @@ const removeFromCard = (item) => {
 }
 
 const onClickAddPlus = (item) => {
-  if (!item.isAdded) {
-    addToCard(item)
+  if (!quantities.value[item.id]) {
+    quantities.value[item.id] = 0
   }
-  cartItemCount.value++
-
-
+  addToCard(item)
 }
 
-
+const getProductQuantity = (item) => {
+  return quantities.value[item] || 0;
+}
 // const onChangeSelect = (event) => {
 //   filters.sortBy = event.target.value
 // }
@@ -116,8 +122,9 @@ provide('card', {
   closeDrawer,
   openDrawer,
   removeFromCard,
-  cartItemCount,
+  quantities,
   showModal,
+  getProductQuantity
 })
 
 watch(
@@ -127,6 +134,12 @@ watch(
   },
   { deep: true }
 )
+
+watch(selectedItem, (newItem) => {
+  if (newItem === 0) {
+    showModal.value = false;
+  }
+});
 
 onMounted(async () => {
   const localCard = localStorage.getItem('card')

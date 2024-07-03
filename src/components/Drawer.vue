@@ -1,6 +1,6 @@
 <template>
-  <div class=" fixed top-0 left-0 h-full font-sans w-full bg-black z-10 opacity-50"></div>
-  <div class=" overflow-y-auto  bg-slate-100  fixed right-0 top-0 z-20 p-8 md:w-96 h-full w-full ">
+  <div class=" fixed  top-0 left-0 h-full font-sans w-full bg-black z-10 opacity-50"></div>
+  <div class=" overflow-y-auto  bg-slate-100  fixed right-0  top-0 z-20 p-8 md:w-96 h-full w-full ">
     <div class=" flex mt-16">
       <svg @click='closeDrawer' width="30px" height="30px" class=" mr-3 cursor-pointer " viewBox="0 0 24 24" fill="none"
            xmlns="http://www.w3.org/2000/svg">
@@ -16,11 +16,12 @@
 
     <InfoBlock v-if="!totalPrice" titlee="Корзина пустая" description="Добавьте пару кофе, что бы оформить заказ"
                image-url="https://i.imgur.com/9fD0UAA.png" />
-    <input class=" p-2 rounded-xl pl-5 mb-2 mt-8 w-full"  v-model="name" type="text" placeholder="Введите ваше имя">
+
 
     <CardItemList v-if="totalPrice" />
 
     <div v-if="totalPrice">
+      <input class=" p-2 rounded-xl  pl-5 mb-2 mt-8 w-full"   v-model="name" type="text" placeholder="Введите свое имя">
       <div class=" flex flex-col gap-4 mb-5 mt-4">
 <!--        <NameUs/>-->
         <div class=" flex gap-2 ">
@@ -80,6 +81,8 @@ const saveName = async () => {
     console.error(err);
   }
 };
+
+
 
 
 

@@ -17,14 +17,11 @@ const drawerOpen = ref(false)
 const showModal = ref(false)
 
 
-
-
-
 const createOrder = async () => {
   try {
     const { data } = await axios.post(`https://8a5d97df2ab05859.mokky.dev/orders`, {
       items: card.value,
-      totalPrice: totalPrice.value,
+      totalPrice: totalPrice.value
     })
 
     card.value = []
@@ -37,9 +34,8 @@ const createOrder = async () => {
 }
 
 
-
 const totalPrice = computed(
-  () =>  card.value.reduce((acc, item) => acc + item.price, 0)
+  () => card.value.reduce((acc, item) => acc + item.price, 0)
 )
 
 const vatPrice = computed(() => Math.round((totalPrice.value * 5)) / 100)
@@ -60,18 +56,17 @@ const filters = reactive({
 })
 
 
-  const cartItemCount = ref(0)
+const cartItemCount = ref(0)
 
 
-
-  const addToCard = (item) => {
-    card.value.push(item)
-    showModal.value = true
-  }
+const addToCard = (item) => {
+  card.value.push(item)
+  showModal.value = true
+}
 
 const removeFromCard = (item) => {
   if (cartItemCount.value > 0) {
-    cartItemCount.value--;
+    cartItemCount.value--
   }
   card.value.splice(
     card.value.indexOf(item), 1)
@@ -106,7 +101,7 @@ onMounted(async () => {
 })
 
 
-watch( filters, async () => {
+watch(filters, async () => {
   try {
     const { data } = await axios.get('https://8a5d97df2ab05859.mokky.dev/items?sortBy=' + filters.sortBy)
     items.value = data
@@ -121,7 +116,8 @@ provide('card', {
   closeDrawer,
   openDrawer,
   removeFromCard,
-
+  cartItemCount,
+  showModal,
 })
 
 watch(
@@ -129,7 +125,7 @@ watch(
   () => {
     localStorage.setItem('card', JSON.stringify(card.value))
   },
-  {deep: true}
+  { deep: true }
 )
 
 onMounted(async () => {
@@ -140,15 +136,27 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full   m-auto bg-slate-50   " >
-    <Drawer @create-order="createOrder" :vat-price="vatPrice" :total-price="totalPrice" v-if="drawerOpen" />
+  <div class="w-full   m-auto bg-slate-50   ">
+    <Drawer
+      @create-order="createOrder"
+      :vat-price="vatPrice"
+      :total-price="totalPrice"
+      v-if="drawerOpen"
+    />
 
-    <Header :total-price="totalPrice" @open-Drawer="openDrawer" />
+    <Header
+      :total-price="totalPrice"
+      @open-Drawer="openDrawer"
+    />
 
-    <MainBox/>
-<!--    <Head :onChangeSelect="onChangeSelect" />-->
+    <!--    <Head :onChangeSelect="onChangeSelect" />-->
 
-    <CardList :cart-item-count="cartItemCount" :show-modal="showModal" :items="items" @add-to-card="onClickAddPlus" />
+    <CardList
+      :cart-Item-Count="cartItemCount"
+      :show-modal="showModal"
+      :items="items"
+      @add-to-card="onClickAddPlus"
+    />
 
 
     <Footer />

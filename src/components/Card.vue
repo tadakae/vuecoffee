@@ -39,7 +39,7 @@
              <b class="pt-3">
                {{ price }}тг
              </b>
-             <svg @click="onClickAdd" width="26px" height="26px" viewBox="0 0 24 24" fill="none"
+             <svg  @click="onClickAdd" width="26px" height="26px" viewBox="0 0 24 24" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
 
                <g id="SVGRepo_bgCarrier" stroke-width="0" />
@@ -66,13 +66,25 @@
        </div>
      </div>
    </div>
-   <!--  mobile-->
 
+   <!--  mobile-->
+   <div v-if="showModal" >
+     <span @click="removeFromCard">---</span>
+     <span>{{cartItemCount}}</span>
+     <span @click="onClickAdd" >+</span>
+   </div>
  </div>
+
 
 </template>
 
 <script setup>
+
+import { inject } from 'vue'
+
+
+const { cartItemCount,  removeFromCard, showModal } = inject('card')
+
 
 
 

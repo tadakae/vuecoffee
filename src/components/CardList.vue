@@ -6,7 +6,7 @@ defineProps({
   // cartItemCount: Array,
   // showModal: Boolean,
 })
-const emit = defineEmits(['addToCard'])
+const emit = defineEmits(['addToCard', 'removeFromCard'])
 
 </script>
 
@@ -24,6 +24,7 @@ const emit = defineEmits(['addToCard'])
         :onClickAdd="() => emit('addToCard', item)"
         :isAdded="item.isAdded"
         :item-id="item.id"
+        :remove-from-card="() => emit('removeFromCard', item)"
       />
     </div>
   </div>
@@ -40,6 +41,7 @@ const emit = defineEmits(['addToCard'])
         :onClickAdd="() => emit('addToCard', item)"
         :isAdded="item.isAdded"
         :item-id="item.id"
+        :remove-from-card="() => emit('removeFromCard', item)"
         class="card"
       />
     </div>

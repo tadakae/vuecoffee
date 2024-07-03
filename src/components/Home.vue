@@ -56,19 +56,19 @@ const filters = reactive({
 
 
 const quantities = ref({})
-const selectedItem = ref(null);
+const selectedItemId = ref(null);
 
 const addToCard = (item) => {
   card.value.push(item)
   quantities.value[item.id] = (quantities.value[item.id] || 0) + 1;
   item.isAdded = true
   showModal.value = true
-  selectedItem.value = item
+  selectedItemId.value = item.id
 }
 
 const removeFromCard = (item) => {
   if (quantities.value[item.id] > 0) {
-    quantities.value[item]--
+    quantities.value[item.id]--
     if (quantities.value[item.id] === 0) {
       showModal.value = false
       item.isAdded = false
@@ -89,7 +89,7 @@ const onClickAddPlus = (item) => {
 }
 
 const getProductQuantity = (item) => {
-  return quantities.value[item] || 0;
+  return quantities.value[item.id] || 0;
 }
 // const onChangeSelect = (event) => {
 //   filters.sortBy = event.target.value
@@ -124,7 +124,8 @@ provide('card', {
   removeFromCard,
   quantities,
   showModal,
-  getProductQuantity
+  getProductQuantity,
+  selectedItemId
 })
 
 watch(
@@ -135,11 +136,11 @@ watch(
   { deep: true }
 )
 
-watch(selectedItem, (newItem) => {
-  if (newItem === 0) {
-    showModal.value = false;
-  }
-});
+// watch(selectedItem, (newItem) => {
+//   if (newItem === 0) {
+//     showModal.value = false;
+//   }
+// });
 
 onMounted(async () => {
   const localCard = localStorage.getItem('card')
@@ -169,6 +170,7 @@ onMounted(async () => {
       :show-modal="showModal"
       :items="items"
       @add-to-card="onClickAddPlus"
+      @remove-from-card="removeFromCard"
     />
 
 

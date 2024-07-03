@@ -23,6 +23,7 @@ const emit = defineEmits(['addToCard'])
         :price="item.price"
         :onClickAdd="() => emit('addToCard', item)"
         :isAdded="item.isAdded"
+        :item-id="item.id"
       />
     </div>
   </div>
@@ -38,6 +39,7 @@ const emit = defineEmits(['addToCard'])
         :price="item.price"
         :onClickAdd="() => emit('addToCard', item)"
         :isAdded="item.isAdded"
+        :item-id="item.id"
         class="card"
       />
     </div>

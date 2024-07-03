@@ -56,19 +56,22 @@ const filters = reactive({
 
 
 const quantities = ref({})
-
+const selectedItem = ref(null);
 
 const addToCard = (item) => {
   card.value.push(item)
+  quantities.value[item.id] = (quantities.value[item.id] || 0) + 1;
   item.isAdded = true
   showModal.value = true
+  selectedItem.value = item
 }
 
 const removeFromCard = (item) => {
-  if (quantities.value[item] > 0) {
+  if (quantities.value[item.id] > 0) {
     quantities.value[item]--
-    if (quantities.value[item] === 0) {
+    if (quantities.value[item.id] === 0) {
       showModal.value = false
+      item.isAdded = false
     }
   }
   card.value.splice(
@@ -79,15 +82,15 @@ const removeFromCard = (item) => {
 }
 
 const onClickAddPlus = (item) => {
-  if (!item.isAdded) {
-    addToCard(item)
+  if (!quantities.value[item.id]) {
+    quantities.value[item.id] = 0
   }
-  cartItemCount.value++
-
-
+  addToCard(item)
 }
 
-
+const getProductQuantity = (item) => {
+  return quantities.value[item] || 0;
+}
 // const onChangeSelect = (event) => {
 //   filters.sortBy = event.target.value
 // }
@@ -119,8 +122,9 @@ provide('card', {
   closeDrawer,
   openDrawer,
   removeFromCard,
-  cartItemCount,
+  quantities,
   showModal,
+  getProductQuantity
 })
 
 watch(
@@ -131,8 +135,8 @@ watch(
   { deep: true }
 )
 
-watch(cartItemCount, (newQuantity) => {
-  if (newQuantity === 0) {
+watch(selectedItem, (newItem) => {
+  if (newItem === 0) {
     showModal.value = false;
   }
 });

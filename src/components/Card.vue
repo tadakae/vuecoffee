@@ -70,7 +70,7 @@
    <!--  mobile-->
    <div v-if="showModal" class="flex w-full px-[30px] py-1 justify-between items-center text-[18px]">
      <span @click="removeFromCard" class="w-[30px] h-full text-center">−</span>
-     <span class="w-[30px] h-full text-center">{{cartItemCount}}</span>
+     <span class="w-[30px] h-full text-center">{{getProductQuantity(itemId)}}</span>
      <span @click="onClickAdd" class="w-[30px] h-full text-center">+</span>
    </div>
  </div>
@@ -83,7 +83,7 @@
 import { inject } from 'vue'
 
 
-const { cartItemCount,  removeFromCard, showModal } = inject('card')
+const { removeFromCard, showModal, getProductQuantity } = inject('card')
 
 
 
@@ -97,6 +97,7 @@ defineProps({
   isAdded: Boolean,
   onClickAdd: Function,
   cartItemCount: Function,
+  itemId: Number
 })
 
 

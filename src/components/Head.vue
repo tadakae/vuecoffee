@@ -6,14 +6,16 @@ defineProps({
 </script>
 
 <template>
-    <div class=" ml-2  p-6  bg-gray-50 pt-28  ">
+    <div class=" p-10  bg-gray-100 ">
         <div class=" flex justify-between ">
-            <div class="">
-              <button class="w-36   h-10   ">
-                <div class="bg-white rounded  ">Мои Заказы</div>
-              </button>
+            <div class="relative pr-12">
+<!--                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">-->
+<!--                    <img src="@/components/assets/search-svgrepo-com.png" class=" w-5 h-5" alt="">-->
+<!--                </div>-->
+
+<!--                    <input class=" border border-gray-200 rounded-md py-2 pl-10 pr-4 focus:outline-none focus:border-gray-400" placeholder="Поиск...">-->
             </div>
-<!--            <select @change="onChangeSelect" class=" mt-2  h-6 md:border rounded-md">-->
+<!--            <select @change="onChangeSelect" class=" border rounded-md py-2 px-3">-->
 <!--                <option value="name">По названию</option>-->
 <!--                <option value="price">По цене (Дешевые)</option>-->
 <!--                <option value="-price">По цене (Дорогие)</option>-->

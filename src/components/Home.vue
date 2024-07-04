@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, provide, reactive, ref, watch } from 'vue'
+import { computed, onMounted, provide,  ref, watch } from 'vue'
 import axios from 'axios'
 
 
@@ -31,9 +31,9 @@ const createOrder = async () => {
 }
 
 
-const totalPrice = computed(
-  () => card.value.reduce((acc, item) => acc + item.price, 0)
-)
+const totalPrice = computed(() => {
+  return card.value.reduce((acc, item) => acc + item.price * item.quantity, 0);
+});
 
 const vatPrice = computed(() => Math.round((totalPrice.value * 5)) / 100)
 
@@ -49,17 +49,14 @@ const closeDrawer = () => {
 
 
 
-const quantities = ref({})
-
 const addToCard = (item) => {
-  const cartItem = card.value.find(ci => ci.id === item.id);
-  if (!cartItem) {
-    card.value.push({...item, quantity: 1})
-    return;
+  const existingItem = card.value.find(ci => ci.id === item.id);
+  if (!existingItem) {
+    card.value.push({...item, quantity: 1});
+  } else {
+    existingItem.quantity += 1;
   }
-
-  cartItem["quantity"] += 1;
-}
+};
 
 const removeFromCard = (item) => {
   const cartItem = card.value.find(ci => ci.id === item.id);
@@ -72,9 +69,6 @@ const removeFromCard = (item) => {
 }
 
 const onClickAdd = (item) => {
-  if (!quantities.value[item.id]) {
-    quantities.value[item.id] = 0
-  }
   addToCard(item)
 }
 
@@ -99,13 +93,14 @@ const _items = computed(() => {
 
 
 
+
+
 provide('card', {
   card,
   addToCard,
   closeDrawer,
   openDrawer,
   removeFromCard,
-  quantities,
 })
 
 watch(
@@ -143,6 +138,7 @@ onMounted(async () => {
       @open-Drawer="openDrawer"
     />
 
+
     <!--    <Head :onChangeSelect="onChangeSelect" />-->
 
     <CardList
@@ -150,6 +146,7 @@ onMounted(async () => {
       @add-to-card="onClickAdd"
       @remove-from-card="removeFromCard"
     />
+
 
 
     <Footer />

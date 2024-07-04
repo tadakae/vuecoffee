@@ -1,11 +1,9 @@
-<script   setup>
+<script setup>
 
 </script>
 
 <template>
-
-  <div class="hidden md:block" >
-<div class="w-full h-3/4 flex mt-24 pb-28 bg-white " >
+<div class="w-full h-3/4 flex mt-24 bg-white " >
   <div>
   <div class="flex mt-10 " >
   <h1 class="text-6xl  pt-44  pl-40">Enjoy your</h1>
@@ -26,7 +24,6 @@
 
 
 </div>
-  </div>
 
 </template>
 

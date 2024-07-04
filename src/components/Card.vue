@@ -68,7 +68,7 @@
    </div>
 
    <!--  mobile-->
-   <div v-if="showModal && selectedItemId === itemId" class="flex w-full px-[30px] py-1 justify-between items-center text-[18px]">
+   <div v-if="showModal[itemId]" class="flex w-full px-[30px] py-1 justify-between items-center text-[18px]">
      <span @click="removeFromCard" class="w-[30px] h-full text-center">−</span>
      <span class="w-[30px] h-full text-center">{{quantities[itemId]}}</span>
      <span @click="onClickAdd" class="w-[30px] h-full text-center">+</span>
@@ -80,7 +80,7 @@
 
 import { inject } from 'vue'
 
-const { showModal, quantities, selectedItemId } = inject('card')
+const { showModal, quantities } = inject('card')
 
 defineProps({
   id: Number,

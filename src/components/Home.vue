@@ -14,7 +14,7 @@ const card = ref([])
 
 const drawerOpen = ref(false)
 
-const showModal = ref(false)
+const showModal = ref({})
 
 const createOrder = async () => {
   try {
@@ -56,21 +56,19 @@ const filters = reactive({
 
 
 const quantities = ref({})
-const selectedItemId = ref(null);
 
 const addToCard = (item) => {
   card.value.push(item)
   quantities.value[item.id] = (quantities.value[item.id] || 0) + 1;
   item.isAdded = true
-  showModal.value = true
-  selectedItemId.value = item.id
+  showModal.value[item.id] = true
 }
 
 const removeFromCard = (item) => {
   if (quantities.value[item.id] > 0) {
     quantities.value[item.id]--
     if (quantities.value[item.id] === 0) {
-      showModal.value = false
+      showModal.value[item.id] = false
       item.isAdded = false
     }
   }
@@ -124,8 +122,7 @@ provide('card', {
   removeFromCard,
   quantities,
   showModal,
-  getProductQuantity,
-  selectedItemId
+  getProductQuantity
 })
 
 watch(

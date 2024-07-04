@@ -56,14 +56,12 @@ const filters = reactive({
 
 
 const quantities = ref({})
-const selectedItemId = ref(null);
 
 const addToCard = (item) => {
   card.value.push(item)
   quantities.value[item.id] = (quantities.value[item.id] || 0) + 1;
   item.isAdded = true
   showModal.value[item.id] = true
-  selectedItemId.value = item.id
 }
 
 const removeFromCard = (item) => {
@@ -124,8 +122,7 @@ provide('card', {
   removeFromCard,
   quantities,
   showModal,
-  getProductQuantity,
-  selectedItemId
+  getProductQuantity
 })
 
 watch(

@@ -80,7 +80,7 @@
 
 import { inject } from 'vue'
 
-const { showModal, quantities, selectedItemId } = inject('card')
+const { showModal, quantities } = inject('card')
 
 defineProps({
   id: Number,

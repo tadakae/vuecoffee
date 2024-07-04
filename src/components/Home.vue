@@ -6,7 +6,6 @@ import axios from 'axios'
 import Header from '@/components/Header.vue'
 import CardList from '@/components/CardList.vue'
 import Drawer from '@/components/Drawer.vue'
-import MainBox from '@/components/MainBox.vue'
 import Footer from '@/components/Footer.vue'
 
 const items = ref([])
@@ -14,7 +13,6 @@ const card = ref([])
 
 const drawerOpen = ref(false)
 
-const showModal = ref(false)
 
 const createOrder = async () => {
   try {
@@ -49,51 +47,36 @@ const closeDrawer = () => {
 }
 
 
-const filters = reactive({
-  sortBy: '',
-  searchQuery: ''
-})
 
 
 const quantities = ref({})
-const selectedItemId = ref(null);
 
 const addToCard = (item) => {
-  card.value.push(item)
-  quantities.value[item.id] = (quantities.value[item.id] || 0) + 1;
-  item.isAdded = true
-  showModal.value = true
-  selectedItemId.value = item.id
+  const cartItem = card.value.find(ci => ci.id === item.id);
+  if (!cartItem) {
+    card.value.push({...item, quantity: 1})
+    return;
+  }
+
+  cartItem["quantity"] += 1;
 }
 
 const removeFromCard = (item) => {
-  if (quantities.value[item.id] > 0) {
-    quantities.value[item.id]--
-    if (quantities.value[item.id] === 0) {
-      showModal.value = false
-      item.isAdded = false
-    }
+  const cartItem = card.value.find(ci => ci.id === item.id);
+  if (cartItem.quantity > 1) {
+    cartItem["quantity"] -= 1;
+    return;
   }
-  card.value.splice(
-    card.value.indexOf(item), 1)
-  item.isAdded = false
 
-
+  card.value = card.value.filter(ci => ci.id !== item.id);
 }
 
-const onClickAddPlus = (item) => {
+const onClickAdd = (item) => {
   if (!quantities.value[item.id]) {
     quantities.value[item.id] = 0
   }
   addToCard(item)
 }
-
-const getProductQuantity = (item) => {
-  return quantities.value[item.id] || 0;
-}
-// const onChangeSelect = (event) => {
-//   filters.sortBy = event.target.value
-// }
 
 
 onMounted(async () => {
@@ -106,15 +89,15 @@ onMounted(async () => {
   }
 })
 
+const _items = computed(() => {
+  return items.value.map((item) => {
+    const cartItem = card.value.find(ci => ci.id === item.id);
+    return { ...item, quantity: cartItem?.quantity || 0 };
+  })
+});
 
-watch(filters, async () => {
-  try {
-    const { data } = await axios.get('https://8a5d97df2ab05859.mokky.dev/items?sortBy=' + filters.sortBy)
-    items.value = data
-  } catch (err) {
-    console.log(err)
-  }
-})
+
+
 
 provide('card', {
   card,
@@ -123,9 +106,6 @@ provide('card', {
   openDrawer,
   removeFromCard,
   quantities,
-  showModal,
-  getProductQuantity,
-  selectedItemId
 })
 
 watch(
@@ -136,7 +116,7 @@ watch(
   { deep: true }
 )
 
-// watch(selectedItem, (newItem) => {
+// watch(selectedItemId, (newItem) => {
 //   if (newItem === 0) {
 //     showModal.value = false;
 //   }
@@ -166,10 +146,8 @@ onMounted(async () => {
     <!--    <Head :onChangeSelect="onChangeSelect" />-->
 
     <CardList
-      :cart-Item-Count="cartItemCount"
-      :show-modal="showModal"
-      :items="items"
-      @add-to-card="onClickAddPlus"
+      :items="_items"
+      @add-to-card="onClickAdd"
       @remove-from-card="removeFromCard"
     />
 

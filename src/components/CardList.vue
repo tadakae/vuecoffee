@@ -12,22 +12,7 @@ const emit = defineEmits(['addToCard', 'removeFromCard'])
 
 
 <template>
-  <div class="hidden md:block">
 
-    <div class="grid grid-cols-5   bg-slate-50 pb-40 " v-auto-animate>
-      <Card
-        v-for="item in items"
-        v-bind:key="item.id"
-        :titlee="item.titlee"
-        :imageUrl="item.imageUrl"
-        :price="item.price"
-        :onClickAdd="() => emit('addToCard', item)"
-        :isAdded="item.isAdded"
-        :item-id="item.id"
-        :remove-from-card="() => emit('removeFromCard', item)"
-      />
-    </div>
-  </div>
 
 
   <div class="md:hidden w-full h-screen m-auto">
@@ -38,6 +23,7 @@ const emit = defineEmits(['addToCard', 'removeFromCard'])
         :titlee="item.titlee"
         :imageUrl="item.imageUrl"
         :price="item.price"
+        :quantity="item.quantity"
         :onClickAdd="() => emit('addToCard', item)"
         :isAdded="item.isAdded"
         :item-id="item.id"
@@ -45,11 +31,11 @@ const emit = defineEmits(['addToCard', 'removeFromCard'])
         class="card"
       />
     </div>
-<!--    <div v-if="showModal" class="absolute w-[80px] left-20 bottom-[300px] bg-[#f3f4f6] flex justify-between bg-[#f3f4f6] px-2 py-1" v-auto-animate>-->
-<!--      <span @click="removeFromCard">-&#45;&#45;</span>-->
-<!--      <span>{{cartItemCount}}</span>-->
-<!--      <span >+</span>-->
-<!--    </div>-->
+    <!--    <div v-if="showModal" class="absolute w-[80px] left-20 bottom-[300px] bg-[#f3f4f6] flex justify-between bg-[#f3f4f6] px-2 py-1" v-auto-animate>-->
+    <!--      <span @click="removeFromCard">-&#45;&#45;</span>-->
+    <!--      <span>{{cartItemCount}}</span>-->
+    <!--      <span >+</span>-->
+    <!--    </div>-->
   </div>
 
 </template>

@@ -1,5 +1,5 @@
 <template>
- <div class=" w-2/4">
+ <div class="relative w-2/4">
    <div class=" hidden md:block">
      <div class="box  ml-10 mt-10 p-4  w-60  border-0 rounded-md bg-white  flex">
        <img :src="imageUrl" alt="" class="img w-24 h-24 rounded-xl">
@@ -25,7 +25,7 @@
 
    <!--  mobile-->
    <div class="    md:hidden m-auto  ">
-     <div class="       m-auto h-52  p-4  w-full bg-white   ">
+     <div class=" m-auto h-52  p-4  w-full bg-white   ">
        <div class="w-full   ">
          <img :src="imageUrl" alt="" class="img w-40  h-28 m-auto  rounded-xl">
          <div class="  text-sm/[17px] mt-3     font-medium ">
@@ -68,25 +68,19 @@
    </div>
 
    <!--  mobile-->
-   <div v-if="showModal" class="flex w-full px-[30px] py-1 justify-between items-center text-[18px]">
+   <div v-if="showModal && selectedItemId === itemId" class="flex w-full px-[30px] py-1 justify-between items-center text-[18px]">
      <span @click="removeFromCard" class="w-[30px] h-full text-center">−</span>
-     <span class="w-[30px] h-full text-center">{{getProductQuantity(itemId)}}</span>
+     <span class="w-[30px] h-full text-center">{{quantities[itemId]}}</span>
      <span @click="onClickAdd" class="w-[30px] h-full text-center">+</span>
    </div>
  </div>
-
-
 </template>
 
 <script setup>
 
 import { inject } from 'vue'
 
-
-const { removeFromCard, showModal, getProductQuantity } = inject('card')
-
-
-
+const { showModal, quantities, selectedItemId } = inject('card')
 
 defineProps({
   id: Number,
@@ -97,10 +91,9 @@ defineProps({
   isAdded: Boolean,
   onClickAdd: Function,
   cartItemCount: Function,
-  itemId: Number
+  itemId: Number,
+  removeFromCard: Function
 })
-
-
 
 </script>
 

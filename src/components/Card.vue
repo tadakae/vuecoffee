@@ -42,7 +42,7 @@
               </svg>
             </div>
             <div  v-if="quantity > 0" class="flex w-24 rounded-t-2xl m-auto border-b -mt-1 bg-gray-100   py-1 justify-between items-center text-[18px]">
-              <span @click="removeFromCard" class="w-[30px] h-full text-center cursor-pointer ">−</span>
+              <span @click="removeFromCartOne" class="w-[30px] h-full text-center cursor-pointer ">−</span>
               <span class="w-[30px] h-full text-center">{{ quantity }}</span>
               <span @click="onClickAdd" class="w-[30px] h-full text-center cursor-pointer">+</span>
             </div>
@@ -69,7 +69,7 @@ defineProps({
   onClickAdd: Function,
   cartItemCount: Function,
   itemId: Number,
-  removeFromCard: Function,
+  removeFromCartOne: Function,
   quantity: Number,
 })
 

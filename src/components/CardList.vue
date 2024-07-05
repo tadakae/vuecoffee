@@ -6,7 +6,7 @@ defineProps({
   // cartItemCount: Array,
   // showModal: Boolean,
 })
-const emit = defineEmits(['addToCard', 'removeFromCard'])
+const emit = defineEmits(['addToCard', 'removeFromCartOne'])
 
 </script>
 
@@ -27,8 +27,9 @@ const emit = defineEmits(['addToCard', 'removeFromCard'])
         :onClickAdd="() => emit('addToCard', item)"
         :isAdded="item.isAdded"
         :item-id="item.id"
-        :remove-from-card="() => emit('removeFromCard', item)"
+        :remove-from-cart-one="() => emit('removeFromCartOne', item)"
         class="card"
+
       />
     </div>
     <!--    <div v-if="showModal" class="absolute w-[80px] left-20 bottom-[300px] bg-[#f3f4f6] flex justify-between bg-[#f3f4f6] px-2 py-1" v-auto-animate>-->

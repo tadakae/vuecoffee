@@ -140,6 +140,7 @@ onMounted(async () => {
       :vat-price="vatPrice"
       :total-price="totalPrice"
       v-if="drawerOpen"
+      :items="_items"
     />
 
     <Header
@@ -155,7 +156,7 @@ onMounted(async () => {
     <CardList
       :items="_items"
       @add-to-card="onClickAdd"
-      @remove-from-card="removeFromCard"
+      @remove-from-cart-one="removeFromCartOne"
     />
 
 

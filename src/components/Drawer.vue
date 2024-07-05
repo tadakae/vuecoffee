@@ -17,9 +17,8 @@
     <InfoBlock v-if="!totalPrice" titlee="Корзина пустая" description="Добавьте пару кофе, что бы оформить заказ"
                image-url="https://i.imgur.com/9fD0UAA.png" />
 
-
     <CardItemList
-      v-if="totalPrice"
+        v-if="totalPrice"
     />
 
     <div v-if="totalPrice">
@@ -59,12 +58,14 @@ import CardItemList from '@/components/CardItemList.vue'
 import { inject, ref } from 'vue'
 import InfoBlock from '@/components/InfoBlock.vue'
 import axios from 'axios'
+import Card from '@/components/Card.vue'
 
 const { closeDrawer } = inject('card')
 
 defineProps({
   totalPrice: Number,
-  vatPrice: Number
+  vatPrice: Number,
+  items: Array
 })
 
 

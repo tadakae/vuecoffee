@@ -18,12 +18,14 @@
                image-url="https://i.imgur.com/9fD0UAA.png" />
 
 
-    <CardItemList v-if="totalPrice" />
+    <CardItemList
+      v-if="totalPrice"
+    />
 
     <div v-if="totalPrice">
       <input class=" p-2 rounded-xl  pl-5 mb-2 mt-8 w-full"   v-model="name" type="text" placeholder="Введите свое имя">
       <div class=" flex flex-col gap-4 mb-5 mt-4">
-<!--        <NameUs/>-->
+        <!--        <NameUs/>-->
         <div class=" flex gap-2 ">
 
               <span>
@@ -65,6 +67,7 @@ defineProps({
   vatPrice: Number
 })
 
+
 const emit = defineEmits(['createOrder'])
 
 
@@ -89,4 +92,3 @@ const saveName = async () => {
 
 
 </script>
-

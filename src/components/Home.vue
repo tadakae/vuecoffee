@@ -35,6 +35,7 @@ const totalPrice = computed(() => {
   return card.value.reduce((acc, item) => acc + item.price * item.quantity, 0);
 });
 
+
 const vatPrice = computed(() => Math.round((totalPrice.value * 5)) / 100)
 
 
@@ -47,18 +48,18 @@ const closeDrawer = () => {
 }
 
 
-
-
 const addToCard = (item) => {
   const existingItem = card.value.find(ci => ci.id === item.id);
   if (!existingItem) {
-    card.value.push({...item, quantity: 1});
+    card.value.push({ ...item, quantity: 1 });
   } else {
     existingItem.quantity += 1;
   }
 };
 
-const removeFromCard = (item) => {
+
+
+const removeFromCartOne = (item) => {
   const cartItem = card.value.find(ci => ci.id === item.id);
   if (cartItem.quantity > 1) {
     cartItem["quantity"] -= 1;
@@ -68,9 +69,18 @@ const removeFromCard = (item) => {
   card.value = card.value.filter(ci => ci.id !== item.id);
 }
 
+const removeFromCard = (item) => {
+  card.value = card.value.filter(ci => ci.id !== item.id);
+};
+
 const onClickAdd = (item) => {
   addToCard(item)
 }
+
+
+
+
+
 
 
 onMounted(async () => {
@@ -88,10 +98,8 @@ const _items = computed(() => {
     const cartItem = card.value.find(ci => ci.id === item.id);
     return { ...item, quantity: cartItem?.quantity || 0 };
   })
+
 });
-
-
-
 
 
 
@@ -101,6 +109,7 @@ provide('card', {
   closeDrawer,
   openDrawer,
   removeFromCard,
+  removeFromCartOne
 })
 
 watch(
@@ -138,6 +147,8 @@ onMounted(async () => {
       @open-Drawer="openDrawer"
     />
 
+    <div class="mt-52 absolute z-50">{{}}</div>
+
 
     <!--    <Head :onChangeSelect="onChangeSelect" />-->
 
@@ -146,7 +157,6 @@ onMounted(async () => {
       @add-to-card="onClickAdd"
       @remove-from-card="removeFromCard"
     />
-
 
 
     <Footer />

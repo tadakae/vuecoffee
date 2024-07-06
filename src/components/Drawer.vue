@@ -17,6 +17,8 @@
     <InfoBlock v-if="!totalPrice" titlee="Корзина пустая" description="Добавьте пару кофе, что бы оформить заказ"
                image-url="https://i.imgur.com/9fD0UAA.png" />
 
+
+
     <CardItemList
         v-if="totalPrice"
     />

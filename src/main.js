@@ -12,12 +12,12 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { ElIcon } from 'element-plus';
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-// import Auth from '@/pages/Auth.vue'
-// import Home from '@/components/Home.vue'
+// import Test from '@/components/Test.vue'
+
 
 const routes = [
-  // { path: '/', name: 'App', component: Home },
-  // { path: '/login', name: 'auth', component: Auth },
+  // { path: '/', name: 'App', component: App },
+  // { path: '/Test', name: 'Test', component: Test },
 ]
 
 const router = createRouter({

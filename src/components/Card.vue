@@ -2,9 +2,10 @@
   <div class="relative w-2/4">
 
     <!--  mobile-->
+
     <div  class="    md:hidden m-auto  ">
-      <div class=" m-auto h-52  p-4  w-full bg-white   ">
-        <div class="w-full   ">
+      <div   class=" m-auto h-52  p-4  w-full bg-white   ">
+        <div @click="() => {TogglePopup('buttonTrigger')}"  class="w-full   ">
           <img :src="imageUrl" alt="" class="img w-40  h-28 m-auto  rounded-xl">
           <div  class="  text-sm/[17px] mt-3     font-medium ">
 
@@ -50,6 +51,9 @@
         </div>
       </div>
     </div>
+    <Popup v-if="popupTriggers.buttonTrigger"
+           :TogglePopup="() => TogglePopup('buttonTrigger')">
+    </Popup>
 
     <!--  mobile-->
   </div>
@@ -57,7 +61,17 @@
 
 <script setup>
 
+import { ref } from 'vue'
 
+const popupTriggers = ref({
+  buttonTrigger: false,
+});
+
+const TogglePopup = (trigger) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+}
+
+import Popup from '@/components/Popup.vue'
 
 defineProps({
   id: Number,

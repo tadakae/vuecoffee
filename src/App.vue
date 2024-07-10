@@ -1,6 +1,3 @@
-
-
-
 <script setup>
 import { computed, onMounted, provide,  ref, watch } from 'vue'
 import axios from 'axios'
@@ -10,6 +7,7 @@ import Header from '@/components/Header.vue'
 import CardList from '@/components/CardList.vue'
 import Drawer from '@/components/Drawer.vue'
 import Footer from '@/components/Footer.vue'
+// import HeaderBotBox from '@/components/HeaderBotBox.vue'
 
 const items = ref([])
 const card = ref([])
@@ -153,7 +151,8 @@ onMounted(async () => {
       @open-Drawer="openDrawer"
     />
 
-    <div class="mt-52 absolute z-50">{{}}</div>
+<!--    <HeaderBotBox/>-->
+
 
 
     <!--    <Head :onChangeSelect="onChangeSelect" />-->

@@ -8,6 +8,7 @@ defineProps({
 })
 const emit = defineEmits(['addToCard', 'removeFromCartOne'])
 
+
 </script>
 
 
@@ -44,7 +45,7 @@ const emit = defineEmits(['addToCard', 'removeFromCartOne'])
 
 <style>
 .card-list {
-  @apply flex flex-wrap bg-slate-50 pt-20;
+  @apply flex flex-wrap bg-slate-50 mt-20 pb-14 ;
 }
 
 .card-list .card:nth-child(2n) {
